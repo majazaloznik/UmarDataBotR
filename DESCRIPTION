@@ -1,0 +1,20 @@
+Package: UmarDataBotR
+Type: Package
+Title: Run Logging and Notifications for UMAR Automation Scripts
+Version: 0.1.0
+Author: Maja Zalo\u017enik
+Maintainer: Maja Zaloznik <maja.zaloznik@gmail.com>
+Description: One mechanism for timestamped logging, error-tolerant steps and
+    email routing in UMAR's scheduled runners. Failures go to the maintainer,
+    data-update notices go to users, and weekly or monthly jobs send a
+    heartbeat so that a run that never happened is noticed.
+License: GPL (>= 3)
+Encoding: UTF-8
+Depends: R (>= 4.1.0)
+Imports:
+    gmailr (>= 2.0.0)
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.1.0
