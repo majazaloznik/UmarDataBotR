@@ -1,4 +1,4 @@
 library(testthat)
-library(UMARbotR)
+library(UmarDataBotR)
 
-test_check("UMARbotR")
+test_check("UmarDataBotR")
