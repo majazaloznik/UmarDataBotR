@@ -39,14 +39,14 @@ route_notifications <- function(run) {
     msgs[[length(msgs) + 1]] <- list(
       to = run$maintainer,
       subject = sprintf("[ISSUES] %s", run$name),
-      body = paste0("Tek se je zaklju\u010dil z opozorili.",
+      body = paste0("Obdelava se je zaklju\u010dila z opozorili.",
                     summary_html, issues_html, warnings_html, log_html, sign))
   } else if (run$heartbeat) {
     msgs[[length(msgs) + 1]] <- list(
       to = run$maintainer,
       subject = sprintf("[OK] %s%s", run$name,
                         if (run$new_data) "" else " - ni novih podatkov"),
-      body = paste0("Tek uspe\u0161no zaklju\u010den.", summary_html, warnings_html, sign))
+      body = paste0("Obdelava uspe\u0161no zaklju\u010dena.", summary_html, warnings_html, sign))
   }
 
   # users

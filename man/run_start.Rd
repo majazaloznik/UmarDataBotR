@@ -9,7 +9,8 @@ run_start(
   maintainer,
   recipients = character(),
   heartbeat = TRUE,
-  user_intro = NULL
+  user_intro = NULL,
+  log_file = NULL
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ email after every successful run, so a run that never happened is noticed.
 Use FALSE for daily jobs.}
 
 \item{user_intro}{HTML text that opens the users' email.}
+
+\item{log_file}{for appending}
 }
 \value{
 a \code{bot_run} object (an environment)

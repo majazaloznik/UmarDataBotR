@@ -16,11 +16,12 @@
 #'   email after every successful run, so a run that never happened is noticed.
 #'   Use FALSE for daily jobs.
 #' @param user_intro HTML text that opens the users' email.
+#' @param log_file for appending
 #'
 #' @return a `bot_run` object (an environment)
 #' @export
 run_start <- function(name, maintainer, recipients = character(),
-                      heartbeat = TRUE, user_intro = NULL) {
+                      heartbeat = TRUE, user_intro = NULL, log_file = NULL) {
   stopifnot(is.character(name), length(name) == 1,
             is.character(maintainer), length(maintainer) >= 1,
             is.character(recipients), is.logical(heartbeat))
@@ -38,6 +39,7 @@ run_start <- function(name, maintainer, recipients = character(),
   run$summary <- character()
   run$new_data <- FALSE
   run$error <- NULL
+  run$log_file <- log_file
   class(run) <- "bot_run"
   .bot$current <- run
   log_msg("Run started: %s", name)
@@ -64,6 +66,8 @@ log_msg <- function(...) {
   text <- if (length(args) == 1) as.character(args[[1]]) else sprintf(...)
   line <- sprintf("[%s] %s", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), text)
   base::message(line)
+  if (!is.null(.bot$current$log_file))
+    cat(line, "\n", file = .bot$current$log_file, append = TRUE, sep = "")
   if (!is.null(.bot$current)) .bot$current$lines <- c(.bot$current$lines, line)
   invisible(line)
 }
