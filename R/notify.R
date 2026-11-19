@@ -73,6 +73,7 @@ route_notifications <- function(run) {
 #' @return nothing useful
 #' @export
 bot_auth <- function() {
+  options(gargle_verbosity = "silent")   # bot sessions: no info chatter; errors still raised
   cred <- Sys.getenv("UMAR_BOT_CREDENTIALS")
   if (!nzchar(cred) || !file.exists(cred))
     stop("UMAR_BOT_CREDENTIALS is not set or the file does not exist: '", cred, "'")
